@@ -130,12 +130,16 @@ export default function ContentList({
       >
         {items.map((post, index) => {
           const projectUrl = `${urlPrefix}/${post.uid}`;
-          const externalUrl = isFilled.link(post.data.link) ? post.data.link.url : projectUrl;
+          const externalUrl = isFilled.link(post.data.link)
+            ? post.data.link.url
+            : projectUrl;
 
           return (
             <li
               key={index}
-              ref={(el) => (itemsRef.current[index] = el)}
+              ref={(el) => {
+                itemsRef.current[index] = el;
+              }}
               onMouseEnter={() => onMouseEnter(index)}
               className="list-item opacity-0"
             >
